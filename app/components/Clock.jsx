@@ -7,7 +7,7 @@ class Clock extends React.Component{
     totalSeconds: 0
   }
 
-  propTypes = {
+  PropTypes = {
     totalSeconds: PropTypes.number
   }
 
