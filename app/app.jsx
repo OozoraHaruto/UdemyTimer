@@ -5,6 +5,8 @@ import {HashRouter as Router, Route} from 'react-router-dom' ;
 
 //Compents
 import Main from 'Main';
+import Timer from 'Timer';
+import Countdown from 'Countdown';
 
 //extra codes if needed
 
@@ -19,8 +21,9 @@ require('style-loader!css-loader!applicationStyles');
 ReactDOM.render(
   <Router>
         <Main>
-          {//Additional crap
-          }
+            <Route exact path="/" component={Timer} />
+            <Route path="/countdown" component={Countdown} />
+            <Route path="/timer" component={Timer} />
         </Main>
   </Router>,
   document.getElementById('app')

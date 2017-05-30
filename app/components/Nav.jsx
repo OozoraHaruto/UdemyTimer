@@ -23,7 +23,7 @@ class Nav extends React.Component{
           <ul className="menu">
             <li className="menu-text">Udemy Timer</li>
             <li><NavLink exact to="/">Timer</NavLink></li>
-            <li><NavLink to="/about">Countdown</NavLink></li>
+            <li><NavLink to="/countdown">Countdown</NavLink></li>
           </ul>
         </div>
         <div className="top-bar-right">
