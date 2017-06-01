@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Clock extends React.Component{
-  constructor(props){
-    super(props);
+  // In the latest version react you can define the default props directly like this
+  // but don't forget the static keyword (static works when the stage-0 plugin is installed)
+  static defaultProps = {
     totalSeconds: 0
   }
 
-  PropTypes = {
+  static propTypes = {
     totalSeconds: PropTypes.number
   }
 
