@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+const path = require('path');
 
 module.exports={
   entry: [
@@ -13,6 +14,15 @@ module.exports={
     new webpack.ProvidePlugin({
       '$': 'jquery',
       'jQuery': 'jquery'
+    }),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        sassLoader: {
+          includePaths: [
+              path.resolve(__dirname, './node_modules/foundation-sites/scss')
+          ]
+        }
+      }
     })
   ],
   output:{
@@ -23,7 +33,7 @@ module.exports={
     modules: [__dirname, "node_modules"],
     alias:{
       Main: 'app/components/Main.jsx',
-      applicationStyles: 'app/styles/app.min.css',
+      applicationStyles: 'app/styles/app.scss',
       Nav: 'app/components/Nav.jsx',
       Countdown: 'app/components/Countdown.jsx',
       Timer: 'app/components/Timer.jsx',
@@ -42,6 +52,41 @@ module.exports={
         },
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/
+      },
+      {
+       test: /\.vue$/,
+       loader: 'vue-loader',
+       options: {
+         loaders: {
+           scss: 'vue-style-loader!css-loader!sass-loader?' + JSON.stringify({
+             includePaths: [
+               path.resolve(__dirname, 'node_modules/foundation-sites/scss'),
+             ]
+           }), // <style lang="scss">
+           sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax' // <style lang="sass">
+          }
+        }
+       },
+      {
+        test: /\.scss$/,
+        use: [
+          {loader: 'style-loader'},
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              includePaths: [
+                path.resolve(__dirname, 'node_modules/foundation-sites/scss'),
+              ]
+            }
+          }
+        ]
       }
     ]
   },

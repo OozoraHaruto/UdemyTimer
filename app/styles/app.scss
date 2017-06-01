@@ -1,28 +1,12 @@
 @import "base/variables";
+
+//Foundation -added line 56 - 90 in webpack.config help to solve errrors that sass-loader have
+@import "foundation";
+@import "base/foundation-settings";
+@include foundation-everything;
+
+//components
 @import "components/nav";
 @import "components/clock";
 @import "components/controls";
 @import "components/pageTitle";
-
-.top-bar, .top-bar ul{
-  background-color: $nav-background;
-}
-
-.top-bar{
-  .menu-text{
-    color: $nav-text-color;
-  }
-  .menu > .menu-text > a{
-    display: inline;
-    padding: 0;
-  }
-  a{
-    color: $nav-link-color;
-    &:hover{
-      color: darken($nav-link-color, 5%);
-    }
-    &.active{
-      font-weight: bold;
-    }
-  }
-}

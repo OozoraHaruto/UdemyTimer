@@ -11,11 +11,10 @@ import Countdown from 'Countdown';
 //extra codes if needed
 
 //load foundation
-require('style-loader!css-loader!foundation-sites/dist/css/foundation.min.css');
 $(document).foundation();
 
 //App CSS
-require('style-loader!css-loader!applicationStyles');
+require('applicationStyles'); //added line 56 - 90 in webpack.config that removes the need of adding loaders
 
 //render
 ReactDOM.render(
